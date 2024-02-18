@@ -677,7 +677,6 @@ def goals_menu():
         set_goal.set(selected_value)
 
     goals = retrieve_goals() # Get all goals stored in db
-    print(read_selected_goal())
 
     # Display radiobutton with goals
     for index, goal in enumerate(goals):
@@ -732,28 +731,28 @@ def goals_progress_menu():
             label.grid(row=3, column=0, columnspan=3, rowspan=2, padx=5, pady=5, sticky=NSEW)
 
         else:
-            label = Label(win_prog, text="Your total spend is above your budget.\n You are not on track to achieve your goal and spend less than you total budget.")
+            label = Label(win_prog, text="Your total spend is above your budget.\n You are NOT on track to achieve your goal and spend less than you total budget.")
             label.grid(row=3, column=0, columnspan=3, rowspan=2, padx=5, pady=5, sticky=NSEW)
 
     if goal[0] == 3: # Save at least 10% of total budget
         
         if total_spend <= (budget*0.9):
-            label = Label(win_prog, text="Your total spend is less than 90%' of your budget.\n You are on track to achieve your goal and save 10''%'' of your total budget.")
-            label.grid(row=3, column=0, padx=5, pady=5, sticky=W)
+            label = Label(win_prog, text="Your total spend is less than 90% of your budget.\n You are on track to achieve your goal and save 10% of your total budget.")
+            label.grid(row=3, column=0, columnspan=3, rowspan=2, padx=5, pady=5, sticky=W)
 
         else:
-            label = Label(win_prog, text="Your total spend is above 90%' of your budget.\n You are not on track to achieve your goal and save 10''%'' of you total budget.")
-            label.grid(row=3, column=0, padx=5, pady=5, sticky=W)
+            label = Label(win_prog, text="Your total spend is above 90% of your budget.\n You are NOT on track to achieve your goal and save 10% of you total budget.")
+            label.grid(row=3, column=0, columnspan=3, rowspan=2, padx=5, pady=5, sticky=W)
 
     if goal[0] == 4: # Save at least 20% of total budget
         
         if total_spend <= (budget*0.8):
-            label = Label(win_prog, text="Your total spend is less than 80%' of your budget.\n You are on track to achieve your goal and save 20%' of your total budget.")
-            label.grid(row=3, column=0, padx=5, pady=5, sticky=W)
+            label = Label(win_prog, text="Your total spend is less than 80% of your budget.\n You are on track to achieve your goal and save 20% of your total budget.")
+            label.grid(row=3, column=0, columnspan=3, rowspan=2, padx=5, pady=5, sticky=W)
 
         else:
-            label = Label(win_prog, text="Your total spend is above 80%' of your budget.\n You are not on track to achieve your goal and save 20%' of you total budget.")
-            label.grid(row=3, column=0, padx=5, pady=5, sticky=W)
+            label = Label(win_prog, text="Your total spend is above 80% of your budget.\n You are NOT on track to achieve your goal and save 20% of you total budget.")
+            label.grid(row=3, column=0, columnspan=3, rowspan=2, padx=5, pady=5, sticky=W)
            
 
 
@@ -801,8 +800,6 @@ cursor.executemany('''INSERT OR IGNORE INTO goals(id, description, selected) VAL
 
 db.commit()
 
-
-print(read_selected_goal())
 
 # *** MAIN GUI WINDOW ***
 
