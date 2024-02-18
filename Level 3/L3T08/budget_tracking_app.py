@@ -2,6 +2,9 @@
 # ===== Budget Tracking App ====
 # ===== v1.0 ====== 
 
+# ===== Repository ==== 
+# Github: https://github.com/jlpinana/Python-folder
+
 # === DESCRIPTION: ===
 # Program to manage finances. 
 # Through a GUI menu the user can add incomes, expenses, 
@@ -394,13 +397,12 @@ def view_expense_income_menu(value):
     # Create window
     window = Tk()
     window.title("View")
-    window.geometry("500x300")
-    window.maxsize(500, 300)
+    window.geometry("600x500")
     window.config(bg="lightgrey")
 
     # Show label
     label = Label(window, text="View", padx=5, pady=5)
-    label.grid(row=0, column=1)
+    label.grid(row=0, column=1, sticky=W)
 
     record = retrieve_expense_or_income(value) # Get data from db
 
@@ -415,15 +417,31 @@ def view_expense_income_menu(value):
     elif value == 2:
         label = Label(window, text=f"The total of all your income is: £{total}", padx=5, pady=5)
 
-    label.grid(row=2, column=1)
+    label.grid(row=2, column=1, sticky=W)
 
-    # Display a text window list with all expenses or income
-    txt_output = Text(window, wrap="word", height=20, width=50)
+    # Display a text window list with all expenses or income descriptions
+    txt_output = Text(window, wrap="word", height=20, width=30)
     txt_output.grid(row=3, column=1, padx=5, pady=5)
 
-    txt_output.insert(END, "Description \t Value \t Category\n")
+    txt_output.insert(END, "Description              \n")
     for item in record:
-        txt_output.insert(END, f"{item[1]} \t £{item[2]} \t {item[3]}\n") # List items
+        txt_output.insert(END, f"{item[1]}\n") # List descriptions
+
+    # Display a text window list with all expenses or income values
+    txt_output = Text(window, wrap="word", height=20, width=10)
+    txt_output.grid(row=3, column=2, padx=5, pady=5)
+
+    txt_output.insert(END, "Value\n")
+    for item in record:
+        txt_output.insert(END, f"£{item[2]}\n") # List values
+
+    # Display a text window list with all expenses or income categories
+    txt_output = Text(window, wrap="word", height=20, width=20)
+    txt_output.grid(row=3, column=3, padx=5, pady=5)
+
+    txt_output.insert(END, "Category\n")
+    for item in record:
+        txt_output.insert(END, f"{item[3]}\n") # List categories
 
     window.mainloop() # Keep window on screen
 
