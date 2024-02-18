@@ -1,0 +1,11 @@
+admin, Register Users with task_manager.py, Use task_manager.py to add the usernames and passwords for all team members that will be using this program., 10 Oct 2019, 20 Oct 2019, No
+admin, Assign initial tasks, Use task_manager.py to assign each team member with appropriate tasks, 10 Oct 2019, 25 Oct 2019, No
+admin, Pruebas, pruebas de codigo, 12 03 2024, 10 Nov 2023, No
+admin, Una tareilla, pues no se, elgie tu lo que quieres hacer, 12 Nov 2023, 11 Nov 2023, No
+jose, Una, tarea super chunga, 12 11 2023, 11 Nov 2023, No
+pedro, Una tarea, pues esa tarea que tienes que hacer pedro!, 12 dec 2023, 11 Nov 2023, No
+pedro, tarea complicada, una task super complex, 12 Mar 2023, 11 Nov 2023, No
+jose, jose1, Task complex, 12 mar 2023, 11 Nov 2023, No
+jose, prueba, una prueba de fuego, 11 nov 2023, 12 Nov 2023, No
+jose, otra prueba, otra prueba de fuego rapida, 12 nov 2023, 12 Nov 2023, No
+admin, try, doing some tests, 13 nov 2023, 12 Nov 2023, No
