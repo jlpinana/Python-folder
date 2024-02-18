@@ -317,8 +317,13 @@ def add_expense_income_menu(option):
     def submit_expense():
         '''Sub-function to retrieve values selected by user, construct object and submit to db.'''
 
+        # Show error if description is too long
+        # Reference: https://python-forum.io/thread-39019.html
+        if len(description.get()) > 20:
+            messagebox.showerror('Error', 'Description must be less than 20 characters') 
+
         # Show warning if no input from user
-        if description.get() == '' or value.get() == '' or selected_category.get() == '':
+        elif description.get() == '' or value.get() == '' or selected_category.get() == '':
             messagebox.showwarning('Warning', 'Some fields are empty. Please try again!')
 
         else:  
