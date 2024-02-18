@@ -131,6 +131,8 @@ class Goal():
         cursor = db.cursor()
         cursor.execute('''UPDATE goals SET selected = ?''', (0,)) # Sets all goals to '0'.
         cursor.execute('''UPDATE goals SET selected = 1 WHERE description = ?''', (self.description,)) # Set selected goal to 1.
+        messagebox.showinfo('Success!', 'Goal set succesfully!')
+        db.commit()
         
         
 def retrieve_goals():
@@ -654,8 +656,6 @@ def goals_menu():
         else:
             goal_set = Goal(None, selected_goal, 1) # Construct object
             goal_set.set_selected_goal() # Add to db
-
-            messagebox.showinfo('Success!', 'Goal set succesfully!')
             win_goal.destroy() # Close window
 
 
@@ -677,6 +677,7 @@ def goals_menu():
         set_goal.set(selected_value)
 
     goals = retrieve_goals() # Get all goals stored in db
+    print(read_selected_goal())
 
     # Display radiobutton with goals
     for index, goal in enumerate(goals):
@@ -793,13 +794,15 @@ db.commit()
 # Popultate database tables with some default values
 cursor = db.cursor()
 default_categories = [(1, 'Expenses', 'Groceries'), (2, 'Income', 'Salary')]
-default_goals = [(1, 'No specific goal', 1), (2, 'Spend less than total budget', 0), (3, 'Save min 10''%'' of total budget', 0), (4, 'Save min 20''%'' of total budget', 0)]
+default_goals = [(1, 'No specific goal', 0), (2, 'Spend less than total budget', 0), (3, 'Save min 10''%'' of total budget', 0), (4, 'Save min 20''%'' of total budget', 0)]
 
 cursor.executemany('''INSERT OR IGNORE INTO categories(id, type, name) VALUES(?,?,?)''', (default_categories))
 cursor.executemany('''INSERT OR IGNORE INTO goals(id, description, selected) VALUES(?,?,?)''', (default_goals))
 
 db.commit()
 
+
+print(read_selected_goal())
 
 # *** MAIN GUI WINDOW ***
 
@@ -879,6 +882,8 @@ Button(root,text="Set Goals", command= goals_menu).grid(row=8, column=7, columns
 Button(root,text="View Progress", command= goals_progress_menu).grid(row=8, column=8, columnspan=1, padx=5, pady=5, sticky=W)
 
 root.mainloop() # Keep window on screen
+
+db.close() # Close database connection
 
 
 
